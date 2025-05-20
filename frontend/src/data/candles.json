@@ -1,0 +1,112 @@
+[
+    {
+      "id": 1,
+      "name": "Blue Ocean",
+      "price": 249,
+      "sales": 105,
+      "image": [
+      "/src/assets/images/blue_ocean.jpg",
+      "/src/assets/images/blue_ocean.jpg",
+      "/src/assets/images/blue_ocean.jpg",
+      "/src/assets/images/blue_ocean.jpg"
+
+    ]
+    },
+    {
+      "id": 2,
+      "name": "Lavender Bliss",
+      "price": 299,
+      "sales": 145,
+      "image": [
+      "/src/assets/images/lavender.jpg",
+      "/src/assets/images/lavender.jpg",
+      "/src/assets/images/lavender.jpg",
+      "/src/assets/images/lavender.jpg"
+    ]
+    },
+    {
+      "id": 3,
+      "name": "Morning Rose",
+      "price": 199,
+      "sales": 95,
+      "image": [
+      "/src/assets/images/morning_rose.jpg",
+      "/src/assets/images/morning_rose.jpg",
+      "/src/assets/images/morning_rose.jpg",
+      "/src/assets/images/morning_rose.jpg"
+    ]
+    },
+    {
+      "id": 4,
+      "name": "Vintage Rose",
+      "price": 249,
+      "sales": 105,
+      "image": [
+      "/src/assets/images/vintage_rose.jpg",
+      "/src/assets/images/vintage_rose.jpg",
+      "/src/assets/images/vintage_rose.jpg",
+      "/src/assets/images/vintage_rose.jpg"
+    ]
+    },
+    {
+      "id": 5,
+      "name": "Rose Royale",
+      "price": 299,
+      "sales": 145,
+      "image": [
+      "/src/assets/images/rose_royale.jpg",
+      "/src/assets/images/rose_royale.jpg",
+      "/src/assets/images/rose_royale.jpg",
+      "/src/assets/images/rose_royale.jpg"
+    ]
+    },
+    {
+      "id": 6,
+      "name": "Lavender Moon",
+      "price": 199,
+      "sales": 95,
+      "image": [
+      "/src/assets/images/lavender_moon.jpg",
+      "/src/assets/images/lavender_moon.jpg",
+      "/src/assets/images/lavender_moon.jpg",
+      "/src/assets/images/lavender_moon.jpg"
+    ]
+    },
+    {
+      "id": 7,
+      "name": "Valvet Rose",
+      "price": 249,
+      "sales": 105,
+      "image": [
+      "/src/assets/images/love_yourself.jpg",
+      "/src/assets/images/love_yourself.jpg",
+      "/src/assets/images/love_yourself.jpg",
+      "/src/assets/images/love_yourself.jpg"
+    ]
+    },
+    {
+      "id": 8,
+      "name": "Blue Ocean",
+      "price": 299,
+      "sales": 145,
+      "image": [
+      "/src/assets/images/blue_ocean.jpg",
+      "/src/assets/images/blue_ocean.jpg",
+      "/src/assets/images/blue_ocean.jpg",
+      "/src/assets/images/blue_ocean.jpg"
+    ]
+    },
+    {
+      "id": 9,
+      "name": "Strawberyy",
+      "price": 199,
+      "sales": 95,
+      "image": [
+      "/src/assets/images/strawberry.jpg",
+      "/src/assets/images/strawberry.jpg",
+      "/src/assets/images/strawberry.jpg",
+      "/src/assets/images/strawberry.jpg"
+    ]
+    }
+  ]
+  

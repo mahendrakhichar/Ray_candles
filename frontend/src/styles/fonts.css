@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Condiment';
+    src: url('../assets/fonts/Condiment.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Kalam';
+    src: url('../assets/fonts/Kalam.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face{
+    font-family: 'Permanent Marker';
+    src: url('../assets/fonts/PermanentMarker.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+    @font-face{
+        font-family: 'Satisfy';
+        src: url('../assets/fonts/Satisfy.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+    }
+    @font-face{
+        font-family: 'PlaywriteDKUloopet';
+        src: url('../assets/fonts/PlaywriteDKUloopet.ttf') format('truetype');
+        font-weight: 400;   
+        font-style: normal;
+    }
+    @font-face{
+        font-family: 'PlaywriteFRModerne';
+        src: url('../assets/fonts/PlaywriteFRModerne.ttf') format('truetype');
+        font-weight: 400;   
+        font-style: normal;
+    }
