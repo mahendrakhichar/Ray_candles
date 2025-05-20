@@ -4,21 +4,21 @@
       "name": "Romantic Gift Set",
       "price": 499,
       "sales": 210,
-      "image": "/src/assets/images/gifts/gift1.jpeg"
+      "image": "/images/gifts/gift1.jpeg"
     },
     {
       "id": 2,
       "name": "Festive Hamper",
       "price": 699,
       "sales": 180,
-      "image": "/src/assets/images/gifts/gift2.jpeg"
+      "image": "/images/gifts/gift2.jpeg"
     },
     {
       "id": 3,
       "name": "Mini Scented Box",
       "price": 349,
       "sales": 145,
-      "image": "/src/assets/images/gifts/gift3.jpeg"
+      "image": "/images/gifts/gift3.jpeg"
     }
   ]
   
