@@ -192,15 +192,15 @@ const Home = () => {
             {[
               {
                 name: "Lavender Bliss ",
-                image: "/src/assets/images/lavender.jpg",
+                image: "/images/lavender.jpg",
               },
               {
                 name: "Ocean Blue",
-                image: "/src/assets/images/blue_ocean.jpg",
+                image: "images/blue_ocean.jpg",
               },
               {
                 name: "Velvet Rose",
-                image: "/src/assets/images/love_yourself.jpg",
+                image: "images/love_yourself.jpg",
               },
             ].map((product, index) => (
               <motion.div
