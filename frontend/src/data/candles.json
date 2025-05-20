@@ -5,10 +5,10 @@
       "price": 249,
       "sales": 105,
       "image": [
-      "/src/assets/images/blue_ocean.jpg",
-      "/src/assets/images/blue_ocean.jpg",
-      "/src/assets/images/blue_ocean.jpg",
-      "/src/assets/images/blue_ocean.jpg"
+      "/images/blue_ocean.jpg",
+      "/images/blue_ocean.jpg",
+      "/images/blue_ocean.jpg",
+      "/images/blue_ocean.jpg"
 
     ]
     },
@@ -18,10 +18,10 @@
       "price": 299,
       "sales": 145,
       "image": [
-      "/src/assets/images/lavender.jpg",
-      "/src/assets/images/lavender.jpg",
-      "/src/assets/images/lavender.jpg",
-      "/src/assets/images/lavender.jpg"
+      "/images/lavender.jpg",
+      "/images/lavender.jpg",
+      "/images/lavender.jpg",
+      "/images/lavender.jpg"
     ]
     },
     {
@@ -30,10 +30,10 @@
       "price": 199,
       "sales": 95,
       "image": [
-      "/src/assets/images/morning_rose.jpg",
-      "/src/assets/images/morning_rose.jpg",
-      "/src/assets/images/morning_rose.jpg",
-      "/src/assets/images/morning_rose.jpg"
+      "/images/morning_rose.jpg",
+      "/images/morning_rose.jpg",
+      "/images/morning_rose.jpg",
+      "/images/morning_rose.jpg"
     ]
     },
     {
@@ -42,10 +42,10 @@
       "price": 249,
       "sales": 105,
       "image": [
-      "/src/assets/images/vintage_rose.jpg",
-      "/src/assets/images/vintage_rose.jpg",
-      "/src/assets/images/vintage_rose.jpg",
-      "/src/assets/images/vintage_rose.jpg"
+      "/images/vintage_rose.jpg",
+      "/images/vintage_rose.jpg",
+      "/images/vintage_rose.jpg",
+      "/images/vintage_rose.jpg"
     ]
     },
     {
@@ -54,10 +54,10 @@
       "price": 299,
       "sales": 145,
       "image": [
-      "/src/assets/images/rose_royale.jpg",
-      "/src/assets/images/rose_royale.jpg",
-      "/src/assets/images/rose_royale.jpg",
-      "/src/assets/images/rose_royale.jpg"
+      "/images/rose_royale.jpg",
+      "/images/rose_royale.jpg",
+      "/images/rose_royale.jpg",
+      "/images/rose_royale.jpg"
     ]
     },
     {
@@ -66,10 +66,10 @@
       "price": 199,
       "sales": 95,
       "image": [
-      "/src/assets/images/lavender_moon.jpg",
-      "/src/assets/images/lavender_moon.jpg",
-      "/src/assets/images/lavender_moon.jpg",
-      "/src/assets/images/lavender_moon.jpg"
+      "/images/lavender_moon.jpg",
+      "/images/lavender_moon.jpg",
+      "/images/lavender_moon.jpg",
+      "/images/lavender_moon.jpg"
     ]
     },
     {
@@ -78,22 +78,22 @@
       "price": 249,
       "sales": 105,
       "image": [
-      "/src/assets/images/love_yourself.jpg",
-      "/src/assets/images/love_yourself.jpg",
-      "/src/assets/images/love_yourself.jpg",
-      "/src/assets/images/love_yourself.jpg"
+      "/images/love_yourself.jpg",
+      "/images/love_yourself.jpg",
+      "/images/love_yourself.jpg",
+      "/images/love_yourself.jpg"
     ]
     },
     {
       "id": 8,
-      "name": "Blue Ocean",
+      "name": "Strawberry Swirl",
       "price": 299,
       "sales": 145,
       "image": [
-      "/src/assets/images/blue_ocean.jpg",
-      "/src/assets/images/blue_ocean.jpg",
-      "/src/assets/images/blue_ocean.jpg",
-      "/src/assets/images/blue_ocean.jpg"
+      "/images/Strawberry_swirl.jpg",
+      "/images/Strawberry_swirl.jpg",
+      "/images/Strawberry_swirl.jpg",
+      "/images/Strawberry_swirl.jpg"
     ]
     },
     {
@@ -102,10 +102,10 @@
       "price": 199,
       "sales": 95,
       "image": [
-      "/src/assets/images/strawberry.jpg",
-      "/src/assets/images/strawberry.jpg",
-      "/src/assets/images/strawberry.jpg",
-      "/src/assets/images/strawberry.jpg"
+      "/images/strawberry.jpg",
+      "/images/strawberry.jpg",
+      "/images/strawberry.jpg",
+      "/images/strawberry.jpg"
     ]
     }
   ]
