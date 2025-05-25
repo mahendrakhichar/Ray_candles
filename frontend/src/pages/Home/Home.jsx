@@ -54,14 +54,14 @@ const Home = () => {
             className="mt-10"
           >
             <motion.a
-              href="/candles"
+              href="/Candles"
               whileHover={{ scale: 1.05 }}
               className="bg-amber-600 text-white px-8 py-3 rounded-full text-lg tracking-wide transition-all hover:bg-amber-700 hover:shadow-lg mr-4"
             >
               Shop Now
             </motion.a>
             <motion.a
-              href="/about"
+              href="/About"
               whileHover={{ scale: 1.05 }}
               className="border border-white text-white px-8 py-3 rounded-full text-lg tracking-wide transition-all hover:bg-white hover:text-black"
             >
@@ -221,7 +221,7 @@ const Home = () => {
             ))}
           </div>
           <motion.a
-            href="/candles"
+            href="/Candles"
             whileHover={{ scale: 1.05 }}
             className="inline-block bg-amber-500 text-white px-8 py-3 rounded-full text-lg tracking-wide transition-all hover:bg-amber-600 hover:shadow-lg"
           >

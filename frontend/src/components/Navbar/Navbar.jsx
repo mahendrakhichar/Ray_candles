@@ -9,9 +9,9 @@ const Navbar = ({ cartCount = 0 }) => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Candles', path: '/candles' },
-    { name: 'Gifts', path: '/gifts' },
-    { name: 'Contact Us', path: '/contactus' },
+    { name: 'Candles', path: '/Candles' },
+    { name: 'Gifts', path: '/Gifts' },
+    { name: 'Contact Us', path: '/Contactus' },
   ];
 
   // Handle scroll effect
