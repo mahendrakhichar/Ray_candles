@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import CounterAnimation from '../../components/CounterAnimation/CounterAnimation';
 
 const Home = () => {
@@ -30,7 +31,7 @@ const Home = () => {
           transition={{ duration: 2 }}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="container mx-auto px-6 z-10 text-center "> 
+        <div className="container mx-auto px-6 z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -51,22 +52,24 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-10"
+            className="mt-10 flex justify-center gap-6"
           >
-            <motion.a
-              href="/Candles"
-              whileHover={{ scale: 1.05 }}
-              className="bg-amber-600 text-white px-8 py-3 rounded-full text-lg tracking-wide transition-all hover:bg-amber-700 hover:shadow-lg mr-4"
-            >
-              Shop Now
-            </motion.a>
-            <motion.a
-              href="/About"
-              whileHover={{ scale: 1.05 }}
-              className="border border-white text-white px-8 py-3 rounded-full text-lg tracking-wide transition-all hover:bg-white hover:text-black"
-            >
-              Our Story
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Link
+                to="/Candles"
+                className="inline-block bg-amber-600 text-white px-8 py-3 rounded-full text-lg tracking-wide transition-all hover:bg-amber-700 hover:shadow-lg"
+              >
+                Shop Now
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Link
+                to="/About"
+                className="inline-block border border-white text-white px-8 py-3 rounded-full text-lg tracking-wide transition-all hover:bg-white hover:text-black"
+              >
+                Our Story
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
         <motion.div
@@ -96,8 +99,7 @@ const Home = () => {
         </motion.div>
       </section>
 
-
-     {/* Stats Section */}
+      {/* Stats Section */}
       <section className="bg-white py-24">
         <div className="container mx-auto px-6 text-center">
           <motion.h2
@@ -131,7 +133,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
 
       {/* Testimonials Section */}
       <section className="bg-white py-24">
@@ -220,13 +221,14 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-          <motion.a
-            href="/Candles"
-            whileHover={{ scale: 1.05 }}
-            className="inline-block bg-amber-500 text-white px-8 py-3 rounded-full text-lg tracking-wide transition-all hover:bg-amber-600 hover:shadow-lg"
-          >
-            Shop All Candles
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.05 }}>
+            <Link
+              to="/Candles"
+              className="inline-block bg-amber-500 text-white px-8 py-3 rounded-full text-lg tracking-wide transition-all hover:bg-amber-600 hover:shadow-lg"
+            >
+              Shop All Candles
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>
