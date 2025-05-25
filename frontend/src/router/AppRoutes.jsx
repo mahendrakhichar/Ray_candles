@@ -14,11 +14,11 @@ const AppRoutes = () => {
       <Navbar cartCount={2} /> {/* Example with 2 items in cart */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/candles" element={<Candles />} />
-        <Route path="/gifts" element={<Gifts />} />
-        <Route path="/contactus" element={<ContactUs />} />
-        <Route path="/candles/:id" element={<CandleDetail />} />
-        <Route path="/gifts/:id" element={<GiftDetail />} />
+        <Route path="/Candles" element={<Candles />} />
+        <Route path="/Gifts" element={<Gifts />} />
+        <Route path="/Contactus" element={<ContactUs />} />
+        <Route path="/Candles/:id" element={<CandleDetail />} />
+        <Route path="/Gifts/:id" element={<GiftDetail />} />
       </Routes>
       <Footer />
     </BrowserRouter>
