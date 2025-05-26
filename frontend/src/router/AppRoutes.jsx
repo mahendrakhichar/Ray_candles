@@ -7,6 +7,10 @@ import ContactUs from '../pages/ContactUs/ContactUs';
 import CandleDetail from '../pages/CandleDetail/CandleDetail';
 import GiftDetail from '../pages/GiftDetail/GiftDetail';
 import Footer from '../components/Footer/Footer';
+import Shipping from '../pages/Footer-links/Shipping';
+import Returns from '../pages/Footer-links/Returns';
+import FAQ from '../pages/Footer-links/FAQ';
+import About from '../pages/Footer-links/About';
 
 const AppRoutes = () => {
   return (
@@ -16,9 +20,15 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Candles" element={<Candles />} />
         <Route path="/Gifts" element={<Gifts />} />
+        <Route path="/Gifts/:id" element={<GiftDetail />} />
         <Route path="/Contactus" element={<ContactUs />} />
         <Route path="/Candles/:id" element={<CandleDetail />} />
-        <Route path="/Gifts/:id" element={<GiftDetail />} />
+        {/* //footer */}
+        <Route path="/shipping" element={<Shipping />} />
+        <Route path="/returns" element={<Returns />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/About" element={<About />} />
+
       </Routes>
       <Footer />
     </BrowserRouter>

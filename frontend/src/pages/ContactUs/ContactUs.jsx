@@ -10,8 +10,17 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
+    // Format the message for WhatsApp
+    const whatsappMessage = encodeURIComponent(
+      `New Contact Form Submission\nName: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+    );
+    // Redirect to WhatsApp with the formatted message
+    window.open(`https://wa.me/8210293504?text=${whatsappMessage}`, '_blank');
+    // Reset form and show success message
     setFormData({ name: '', email: '', message: '' });
+    setIsSubmitted(true);
+    // Hide success message after 3 seconds
+    setTimeout(() => setIsSubmitted(false), 3000);
   };
 
   const handleChange = (e) => {
@@ -159,7 +168,7 @@ const ContactUs = () => {
                   <span>Telegram</span>
                 </a>
                 <a
-                  href="mailto:your-email@example.com"
+                  href="mailto:raycandless@gmail.com"
                   className="flex items-center gap-3 text-gray-600 hover:text-red-400 transition-colors duration-300"
                 >
                   <FaEnvelope className="text-2xl" />

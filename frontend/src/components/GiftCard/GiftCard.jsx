@@ -10,7 +10,7 @@ const GiftCard = ({ gift }) => {
       whileHover={{ scale: 1.05 }}
       onClick={() => navigate(`/gifts/${gift.id}`)}
     >
-      <img src={gift.image} alt={gift.name} className="w-full h-120 object-cover" />
+      <img src={gift.image} alt={gift.name} className="w-200 h-60 object-cover" />
       <div className="p-4">
         <h3 className="text-lg font-medium">{gift.name}</h3>
         <p className="text-gray-600">₹{gift.price}</p>

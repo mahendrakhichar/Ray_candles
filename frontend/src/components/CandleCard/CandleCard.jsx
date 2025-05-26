@@ -13,7 +13,7 @@ const CandleCard = ({ candle }) => {
       <img
         src={candle.image[0]}
         alt={candle.name}
-        className="w-full h-120 object-cover"
+        className="w-200 h-65 object-cover"
       />
       <div className="p-4">
         <h3 className="text-lg font-medium">{candle.name}</h3>
