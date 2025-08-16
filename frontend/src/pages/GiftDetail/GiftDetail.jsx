@@ -1,40 +1,92 @@
-import { useParams } from 'react-router-dom';
-import giftsData from '../../data/gifts'; // Assuming you have a giftsData.js file with gift data
-import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
 import { motion } from 'framer-motion';
+import { CartContext } from '../../components/CartContext/CartContext';
+import giftsData from '../../data/gifts';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 
 const GiftDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
   const gift = giftsData.find((g) => g.id === parseInt(id));
   const [message, setMessage] = useState('');
 
-  if (!gift) return <div>Gift Not Found</div>;
+  if (!gift) return <div className="text-center mt-10">Gift Not Found</div>;
+
+  const handleAddToCart = () => {
+    addToCart({ ...gift, message }); // Include message with gift
+    navigate('/cart');
+  };
+
+  const handleBuyNow = () => {
+    addToCart({ ...gift, message, quantity: 1 }); // Reset quantity to 1 for Buy Now
+    navigate('/cart');
+  };
 
   return (
     <motion.div
-      className="p-6 flex flex-col md:flex-row gap-8"
+      className="p-6 flex flex-col md:flex-row gap-10 items-start max-w-6xl mx-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      <div className="flex-1">
-        <img src={gift.image} alt={gift.name} className="rounded-xl w-full" />
+      {/* Image Slider Section */}
+      <div className="flex-1 w-full md:max-w-md">
+        <Swiper
+          modules={[Navigation]}
+          navigation
+          spaceBetween={20}
+          slidesPerView={1}
+          className="rounded-xl shadow-lg"
+        >
+          {Array.isArray(gift.image) ? (
+            gift.image.map((img, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={img}
+                  alt={`${gift.name} ${index}`}
+                  className="rounded-xl w-full h-[400px] object-cover"
+                />
+              </SwiperSlide>
+            ))
+          ) : (
+            <SwiperSlide>
+              <img
+                src={gift.image}
+                alt={gift.name}
+                className="rounded-xl w-full h-[400px] object-cover"
+              />
+            </SwiperSlide>
+          )}
+        </Swiper>
       </div>
-      <div className="flex-1">
-        <h2 className="text-3xl font-semibold mb-2">{gift.name}</h2>
-        <p className="mb-2">Price: ₹{gift.price}</p>
-        <p className="mb-4">Send a message with this gift:</p>
+      {/* Gift Info Section */}
+      <div className="flex-1 space-y-4">
+        <h2 className="text-4xl font-bold text-amber-800">{gift.name}</h2>
+        <p className="text-gray-500 text-lg">Gift Set</p>
+        <p className="text-2xl font-semibold text-green-700">₹{gift.price}</p>
+        <p className="text-gray-600">Send a message with this gift:</p>
         <textarea
           placeholder="Type your message for the card..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded mb-4"
+          className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-700"
           rows={3}
         />
-        <div className="flex gap-4">
-          <button className="border-2 border-gray-700 text-gray-700 px-4 py-2 rounded hover:bg-gray-700 hover:text-white">
+        <div className="flex gap-4 pt-4">
+          <button
+            onClick={handleAddToCart}
+            className="bg-amber-700 text-white px-6 py-2 rounded-lg hover:bg-amber-800 transition"
+          >
             Add to Cart
           </button>
-          <button className="border-2 border-gray-700 text-gray-700 px-4 py-2 rounded hover:bg-gray-700 hover:text-white">
+          <button
+            onClick={handleBuyNow}
+            className="border-2 border-amber-700 text-amber-700 px-6 py-2 rounded-lg hover:bg-amber-700 hover:text-white transition"
+          >
             Buy Now
           </button>
         </div>

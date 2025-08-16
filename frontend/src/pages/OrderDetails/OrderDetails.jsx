@@ -23,9 +23,12 @@ const OrderDetails = () => {
 
   // Prepare order details
   const orderDetails = cartItems
-    .map(item => `${item.name} (Qty: ${item.quantity}) - ₹${(item.price * item.quantity).toFixed(2)}`)
+    .map(item => {
+      const itemDetails = `${item.name} (Qty: ${item.quantity}) - ₹${(item.price * item.quantity).toFixed(2)}`;
+      return item.message ? `${itemDetails}\nMessage: ${item.message}` : itemDetails;
+    })
     .join('\n');
-  const message = `New Order\nItems:\n${orderDetails}\nTotal: ₹${total.toFixed(2)}\nShipping Address:\nName: ${formData.name}\nAddress: ${formData.address}\nCity: ${formData.city}\nState: ${formData.state}\nPin Code: ${formData.pinCode}\nPhone: ${formData.phone}`;
+  const message = `Items:\n${orderDetails}\nTotal: ₹${total.toFixed(2)}\nShipping Address:\nName: ${formData.name}\nAddress: ${formData.address}\nCity: ${formData.city}\nState: ${formData.state}\nPin Code: ${formData.pinCode}\nPhone: ${formData.phone}`;
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -55,7 +58,7 @@ const OrderDetails = () => {
       // Copy order details and address to clipboard
       await navigator.clipboard.writeText(message);
       // Clear cart
-    //   clearCart();
+      clearCart();
       setShowConfirmation(false);
       // Redirect to Instagram
       const instagramHandle = 'sentedcandles_by_ray';

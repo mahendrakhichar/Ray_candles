@@ -71,21 +71,34 @@ const Cart = () => {
                 slidesPerView={1}
                 className="rounded-lg"
               >
-                {item.image.map((img, index) => (
-                  <SwiperSlide key={index}>
+                {Array.isArray(item.image) ? (
+                  item.image.map((img, index) => (
+                    <SwiperSlide key={index}>
+                      <img
+                        src={img}
+                        alt={`${item.name} ${index}`}
+                        className="w-full h-24 rounded-lg object-cover"
+                      />
+                    </SwiperSlide>
+                  ))
+                ) : (
+                  <SwiperSlide>
                     <img
-                      src={img}
-                      alt={`${item.name} ${index}`}
+                      src={item.image}
+                      alt={item.name}
                       className="w-full h-24 rounded-lg object-cover"
                     />
                   </SwiperSlide>
-                ))}
+                )}
               </Swiper>
             </div>
             {/* Item Details */}
             <div className="flex-1">
               <h3 className="text-xl font-semibold text-amber-800">{item.name}</h3>
               <p className="text-gray-600">₹{item.price.toFixed(2)}</p>
+              {item.message && (
+                <p className="text-gray-600 text-sm mt-1">Message: {item.message}</p>
+              )}
               <div className="flex items-center gap-2 mt-2">
                 <button
                   onClick={() => updateQuantity(item.id, -1)}

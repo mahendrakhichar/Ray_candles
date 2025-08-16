@@ -2,7 +2,7 @@
     {
       "id": 1,
       "name": "Blue Ocean",
-      "price": 149,
+      "price": 229,
       "sales": 105,
       "Fragrance":"",
       "weight":"",
@@ -18,7 +18,7 @@
     {
       "id": 2,
       "name": "Lavender Bliss",
-      "price": 159,
+      "price": 279,
       "sales": 145,
       "Fragrance":"",
       "weight":"",
@@ -34,7 +34,7 @@
     {
       "id": 4,
       "name": "Vintage Rose",
-      "price": 199,
+      "price": 329,
       "sales": 105,
       "Fragrance":"",
       "weight":"",
@@ -49,7 +49,7 @@
     {
       "id": 5,
       "name": "Rose Royale",
-      "price": 49,
+      "price": 79,
       "sales": 145,
       "note":"minimum order quantity:2",
       "Fragrance":"",
@@ -81,7 +81,7 @@
     {
       "id": 7,
       "name": "Valvet Rose",
-      "price": 199,
+      "price": 259,
       "sales": 105,
       "Fragrance":"",
       "weight":"",
@@ -96,7 +96,7 @@
     {
       "id": 8,
       "name": "Strawberry Swirl",
-      "price": 159,
+      "price": 249,
       "sales": 145,
       "Fragrance":"",
       "weight":"",
@@ -111,7 +111,7 @@
     {
       "id": 9,
       "name": "Strawberyy",
-      "price": 249,
+      "price": 299,
       "sales": 95,
       "Fragrance":"",
       "weight":"",
