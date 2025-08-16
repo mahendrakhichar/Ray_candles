@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
+import { CartContext } from '../CartContext/CartContext';
+import { useContext } from 'react';
 
-const Navbar = ({ cartCount = 0 }) => {
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const { cartCount } = useContext(CartContext);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -40,11 +43,13 @@ const Navbar = ({ cartCount = 0 }) => {
     >
       {/* Logo */}
       <div className="flex items-center gap-3">
-        <img
-          src="/logo.png"
-          alt="Logo"
-          className="w-26 h-26 object-contain transition-transform duration-300 hover:scale-105"
-        />
+        <Link to="/">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="w-26 h-26 object-contain transition-transform duration-300 hover:scale-105 cursor-pointer"
+          />
+        </Link>
         {/* <span className="text-2xl font-semibold tracking-tight">GlowVibe</span> */}
       </div>
 

@@ -1,7 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../components/CartContext/CartContext';
 import candlesData from '../../data/candles';
 import { motion } from 'framer-motion';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -9,9 +10,21 @@ import { Navigation } from 'swiper/modules';
 
 const CandleDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
   const candle = candlesData.find((item) => item.id === parseInt(id));
 
   if (!candle) return <div className="text-center mt-10">Candle Not Found</div>;
+
+  const handleAddToCart = () => {
+    addToCart(candle);
+    navigate('/cart');
+  };
+
+  const handleBuyNow = () => {
+    addToCart({ ...candle, quantity: 1 }); // Reset to quantity 1 for Buy Now
+    navigate('/cart');
+  };
 
   return (
     <motion.div
@@ -49,10 +62,16 @@ const CandleDetail = () => {
         <p className="text-2xl font-semibold text-green-700">₹{candle.price}</p>
 
         <div className="flex gap-4 pt-4">
-          <button className="bg-amber-700 text-white px-6 py-2 rounded-lg hover:bg-amber-800 transition">
+          <button
+            onClick={handleAddToCart}
+            className="bg-amber-700 text-white px-6 py-2 rounded-lg hover:bg-amber-800 transition"
+          >
             Add to Cart
           </button>
-          <button className="border-2 border-amber-700 text-amber-700 px-6 py-2 rounded-lg hover:bg-amber-700 hover:text-white transition">
+          <button
+            onClick={handleBuyNow}
+            className="border-2 border-amber-700 text-amber-700 px-6 py-2 rounded-lg hover:bg-amber-700 hover:text-white transition"
+          >
             Buy Now
           </button>
         </div>

@@ -37,35 +37,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-black text-white">
-      {/* Newsletter Section */}
-      <div className="border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-          <div className="flex flex-col items-center gap-6 sm:gap-8">
-            <div className="text-center">
-              <h3 className="text-xl sm:text-2xl font-playfair font-light mb-2 text-amber-300">Join Our Newsletter</h3>
-              <p className="text-gray-400 text-sm sm:text-base">Stay updated with our latest collections and exclusive offers.</p>
-            </div>
-            <form onSubmit={handleSubmit} className="w-full max-w-md">
-              <div className="flex flex-col sm:flex-row gap-2">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="px-4 py-2 sm:px-6 sm:py-3 bg-gray-900 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-amber-500 w-full"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-2 sm:px-8 sm:py-3 bg-amber-600 text-white rounded-full text-sm sm:text-base font-raleway tracking-wide transition-all hover:bg-amber-700 hover:shadow-lg"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+
 
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">

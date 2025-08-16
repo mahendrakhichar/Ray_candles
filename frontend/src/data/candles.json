@@ -2,8 +2,11 @@
     {
       "id": 1,
       "name": "Blue Ocean",
-      "price": 249,
+      "price": 149,
       "sales": 105,
+      "Fragrance":"",
+      "weight":"",
+      "burn_duration":"",
       "image": [
       "/images/blue_ocean.jpg",
       "/images/blue_ocean.jpg",
@@ -15,8 +18,11 @@
     {
       "id": 2,
       "name": "Lavender Bliss",
-      "price": 299,
+      "price": 159,
       "sales": 145,
+      "Fragrance":"",
+      "weight":"",
+      "burn_duration":"",
       "image": [
       "/images/lavender.jpg",
       "/images/lavender.jpg",
@@ -24,23 +30,15 @@
       "/images/lavender.jpg"
     ]
     },
-    {
-      "id": 3,
-      "name": "Morning Rose",
-      "price": 199,
-      "sales": 95,
-      "image": [
-      "/images/morning_rose.jpg",
-      "/images/morning_rose.jpg",
-      "/images/morning_rose.jpg",
-      "/images/morning_rose.jpg"
-    ]
-    },
+
     {
       "id": 4,
       "name": "Vintage Rose",
-      "price": 249,
+      "price": 199,
       "sales": 105,
+      "Fragrance":"",
+      "weight":"",
+      "burn_duration":"",
       "image": [
       "/images/vintage_rose.jpg",
       "/images/vintage_rose.jpg",
@@ -51,8 +49,12 @@
     {
       "id": 5,
       "name": "Rose Royale",
-      "price": 299,
+      "price": 49,
       "sales": 145,
+      "note":"minimum order quantity:2",
+      "Fragrance":"",
+      "weight":"",
+      "burn_duration":"",
       "image": [
       "/images/rose_royale.jpg",
       "/images/rose_royale.jpg",
@@ -63,8 +65,12 @@
     {
       "id": 6,
       "name": "Lavender Moon",
-      "price": 199,
+      "price": 99,
       "sales": 95,
+      "note":"minimum order quantity:2",
+      "Fragrance":"",
+      "weight":"",
+      "burn_duration":"",
       "image": [
       "/images/lavender_moon.jpg",
       "/images/lavender_moon.jpg",
@@ -75,8 +81,11 @@
     {
       "id": 7,
       "name": "Valvet Rose",
-      "price": 249,
+      "price": 199,
       "sales": 105,
+      "Fragrance":"",
+      "weight":"",
+      "burn_duration":"",
       "image": [
       "/images/love_yourself.jpg",
       "/images/love_yourself.jpg",
@@ -87,8 +96,11 @@
     {
       "id": 8,
       "name": "Strawberry Swirl",
-      "price": 299,
+      "price": 159,
       "sales": 145,
+      "Fragrance":"",
+      "weight":"",
+      "burn_duration":"",
       "image": [
       "/images/Strawberry_swirl.jpg",
       "/images/Strawberry_swirl.jpg",
@@ -99,8 +111,11 @@
     {
       "id": 9,
       "name": "Strawberyy",
-      "price": 199,
+      "price": 249,
       "sales": 95,
+      "Fragrance":"",
+      "weight":"",
+      "burn_duration":"",
       "image": [
       "/images/strawberry.jpg",
       "/images/strawberry.jpg",

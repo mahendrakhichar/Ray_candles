@@ -18,6 +18,7 @@ const CandleCard = ({ candle }) => {
       <div className="p-4">
         <h3 className="text-lg font-medium">{candle.name}</h3>
         <p className="text-gray-600">₹{candle.price}</p>
+        <p className="text-red-500">{candle.note} </p>
       </div>
     </motion.div>
   );
