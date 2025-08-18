@@ -60,10 +60,10 @@ const OrderDetails = () => {
       // Clear cart
       clearCart();
       setShowConfirmation(false);
-      // Redirect to Instagram
+      // Redirect to Instagram in a new tab
       const instagramHandle = 'sentedcandles_by_ray';
       const instagramUrl = `https://www.instagram.com/${instagramHandle}`;
-      window.location.href = instagramUrl;
+      window.open(instagramUrl, '_blank');
     } catch (err) {
       setError('Failed to copy order details. Please copy manually.');
       setShowConfirmation(false);
