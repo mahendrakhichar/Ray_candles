@@ -39,14 +39,17 @@ const Home = () => {
             className="mb-8"
           >
             <h2 className="text-base sm:text-lg md:text-xl uppercase tracking-widest text-amber-300 mb-3">
-              Handcrafted with Love
+              Light. Love. Ray.
             </h2>
+
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight">
-              Shining Light, <span className="font-medium">Soothing Soul</span>
+              <span className="font-medium">Ray Candles </span>Brighten Every Moment
             </h1>
+
             <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl sm:max-w-2xl mx-auto">
               Let the warmth and fragrance of our candles brighten your space and spirit.
             </p>
+
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}

@@ -45,7 +45,7 @@ const Navbar = () => {
       <div className="flex items-center gap-3">
         <Link to="/">
           <img
-            src="/logo.png"
+            src="/logoHome.png"
             alt="Logo"
             className="w-26 h-26 object-contain transition-transform duration-300 hover:scale-105 cursor-pointer"
           />
