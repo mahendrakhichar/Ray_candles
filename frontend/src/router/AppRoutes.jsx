@@ -14,7 +14,7 @@ import About from '../pages/Footer-links/About';
 import Cart from '../pages/Cart/Cart';
 import OrderDetails from '../pages/OrderDetails/OrderDetails';
 import { CartProvider } from '../components/CartContext/CartContext';
-
+import Temp from '../pages/temp';
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -34,6 +34,8 @@ const AppRoutes = () => {
           <Route path="/returns" element={<Returns />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/About" element={<About />} />
+          <Route path='/sweetu' element={<Temp/>}/>
+
 
         </Routes>
         <Footer />
