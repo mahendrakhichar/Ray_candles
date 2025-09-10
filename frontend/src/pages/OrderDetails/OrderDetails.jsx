@@ -108,7 +108,7 @@ const OrderDetails = () => {
             <p className="text-gray-600 mt-4">
               Click below to copy these details and contact{' '}
               <a
-                href="https://www.instagram.com/sentedcandles_by_ray"
+                href="https://www.instagram.com/rayofcandles"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-amber-700 underline"
