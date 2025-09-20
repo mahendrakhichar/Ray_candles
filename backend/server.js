@@ -40,8 +40,6 @@ app.use(cors({
   credentials: true
 }));
 
-// Handle preflight OPTIONS requests
-app.options('*', cors());
 
 // Raw body parsing for webhooks
 app.use('/api/payments/webhook', express.raw({ type: 'application/json' }));
