@@ -17,7 +17,7 @@ const GiftDetail = () => {
   useEffect(() => {
     const fetchGift = async () => {
       try {
-        const response = await fetch(`/api/products/${id}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
         const data = await response.json();
 
         // ✅ store only product part

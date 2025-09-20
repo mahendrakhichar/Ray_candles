@@ -22,7 +22,7 @@ const Gifts = () => {
   useEffect(() => {
     const fetchGifts = async () => {
       try {
-        const res = await fetch("/api/products");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }

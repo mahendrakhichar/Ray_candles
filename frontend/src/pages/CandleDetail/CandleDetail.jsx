@@ -19,7 +19,7 @@ const CandleDetail = () => {
   useEffect(() => {
     const fetchCandle = async () => {
       try {
-        const res = await fetch(`/api/products/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
         const data = await res.json();
         if (res.ok) {
           // Normalize imageUrls for backward compatibility
