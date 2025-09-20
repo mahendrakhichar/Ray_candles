@@ -20,11 +20,28 @@ connectDB();
 
 // Security Middleware
 app.use(helmet()); // Set security headers
+const allowedOrigins = [
+  'http://localhost:5173',        // dev
+  'https://www.rayofcandles.in', // prod
+  'https://rayofcandles.in'      // Vercel sometimes strips www
+];
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'https://www.rayofcandles.in' : 'http://localhost:5173',
-  credentials: true,
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); // allow tools like Postman
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 }));
+
+// Handle preflight OPTIONS requests
+app.options('*', cors());
 
 // Raw body parsing for webhooks
 app.use('/api/payments/webhook', express.raw({ type: 'application/json' }));
