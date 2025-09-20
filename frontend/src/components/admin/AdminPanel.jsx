@@ -42,7 +42,11 @@ export default function AdminPanel() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/auth/login', { username, password });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        { username, password },
+        { withCredentials: true } // important if using cookies
+      );
       localStorage.setItem('token', res.data.token);
       setIsAuthenticated(true);
       toast.success('Logged in successfully');
