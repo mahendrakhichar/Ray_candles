@@ -8,7 +8,16 @@ export const CartProvider = ({ children }) => {
   // Load cart from localStorage on mount
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    setCartItems(cart);
+    // Normalize any old cart items with imageUrl to imageUrls
+    const normalizedCart = cart.map(item => ({
+      ...item,
+      imageUrls: Array.isArray(item.imageUrls)
+        ? item.imageUrls
+        : item.imageUrl
+        ? [item.imageUrl]
+        : [],
+    }));
+    setCartItems(normalizedCart);
   }, []);
 
   // Update cart and localStorage
@@ -19,27 +28,36 @@ export const CartProvider = ({ children }) => {
 
   // Add item to cart
   const addToCart = (item) => {
+    // Normalize item to ensure imageUrls is an array
+    const normalizedItem = {
+      ...item,
+      imageUrls: Array.isArray(item.imageUrls)
+        ? item.imageUrls
+        : item.imageUrl
+        ? [item.imageUrl]
+        : [],
+    };
     const newCart = [...cartItems];
-    const existingItem = newCart.find(cartItem => cartItem.id === item.id);
+    const existingItem = newCart.find(cartItem => cartItem._id === normalizedItem._id);
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
-      newCart.push({ ...item, quantity: 1 });
+      newCart.push({ ...normalizedItem, quantity: 1 });
     }
     updateCart(newCart);
   };
 
   // Update item quantity
-  const updateQuantity = (id, delta) => {
+  const updateQuantity = (_id, delta) => {
     const newCart = cartItems.map(item =>
-      item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
+      item._id === _id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
     );
     updateCart(newCart);
   };
 
   // Remove item
-  const removeItem = (id) => {
-    const newCart = cartItems.filter(item => item.id !== id);
+  const removeItem = (_id) => {
+    const newCart = cartItems.filter(item => item._id !== _id);
     updateCart(newCart);
   };
 

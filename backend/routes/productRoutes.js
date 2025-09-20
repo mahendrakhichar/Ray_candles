@@ -6,7 +6,8 @@ const router = express.Router();
 // Get all products
 router.get('/', async (req, res, next) => {
   try {
-    const products = await Product.find().select('name description price stock imageUrl category');
+    const products = await Product.find();
+
     res.json({
       message: 'Products retrieved successfully',
       products,
@@ -19,7 +20,7 @@ router.get('/', async (req, res, next) => {
 // Get single product
 router.get('/:id', async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id).select('name description price stock imageUrl category');
+    const product = await Product.findById(req.params.id).select('name description price imageUrls type CandleCare');
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }
@@ -35,18 +36,29 @@ router.get('/:id', async (req, res, next) => {
 // Create product (admin only)
 router.post('/', authMiddleware, async (req, res, next) => {
   try {
+    // Only allow admin
     if (req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Admin access required' });
+      return res.status(403).json({ message: 'Access denied. Admins only.' });
     }
-    const { name, description, price, stock, imageUrl, category } = req.body;
+
+    const { name, price, imageUrls, type, description, CandleCare } = req.body;
 
     // Validate input
-    if (!name || !description || price == null || stock == null) {
-      return res.status(400).json({ message: 'Name, description, price, and stock are required' });
+    if (!name || price == null || !imageUrls || !imageUrls[0]) {
+      return res.status(400).json({ message: 'Name, price, and main image URL are required' });
     }
 
-    const product = new Product({ name, description, price, stock, imageUrl, category });
+    const product = new Product({
+      name,
+      description: description || '',
+      price,
+      imageUrls: imageUrls.filter(url => url.trim() !== ''), // Remove empty URLs
+      type: type || 'candle',
+      CandleCare: CandleCare || '',
+    });
+
     await product.save();
+
     res.status(201).json({
       message: 'Product created successfully',
       product,
@@ -62,13 +74,27 @@ router.put('/:id', authMiddleware, async (req, res, next) => {
     if (req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Admin access required' });
     }
+    const { name, description, price, imageUrls, type, CandleCare } = req.body;
+
+    // Validate input
+    if (!name || price == null || !imageUrls || !imageUrls[0]) {
+      return res.status(400).json({ message: 'Name, price, and main image URL are required' });
+    }
+
     const product = await Product.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      {
+        name,
+        description: description || '',
+        price,
+        imageUrls: imageUrls.filter(url => url.trim() !== ''),
+        type: type || 'candle',
+        CandleCare: CandleCare || '',
+      },
       {
         new: true,
         runValidators: true,
-        select: 'name description price stock imageUrl category',
+        select: 'name description price imageUrls type CandleCare',
       }
     );
     if (!product) {

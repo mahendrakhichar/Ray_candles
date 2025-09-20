@@ -17,20 +17,28 @@ const productSchema = new mongoose.Schema({
     required: [true, 'Price is required'],
     min: [0, 'Price cannot be negative'],
   },
-  stock: {
-    type: Number,
-    required: [true, 'Stock quantity is required'],
-    min: [0, 'Stock cannot be negative'],
+  imageUrls: {
+    type: [String],
+    validate: {
+      validator: function (arr) {
+        // Ensure the first (main) image URL is valid, others are optional
+        if (!arr || arr.length === 0 || !arr[0]) {
+          return false; // Main image is required
+        }
+        // Validate all provided URLs
+        return arr.every(url => !url || /^https?:\/\/.*\.(?:png|jpg|jpeg|gif)$/i.test(url));
+      },
+      message: 'Main image URL is required and all URLs must be valid image URLs (png, jpg, jpeg, gif)',
+    },
   },
-  imageUrl: {
+  CandleCare: {
     type: String,
     trim: true,
-    match: [/^https?:\/\/.*\.(?:png|jpg|jpeg|gif)$/i, 'Please provide a valid image URL'],
   },
-  category: {
+  type: {
     type: String,
-    enum: ['scented', 'unscented', 'decorative', 'other'],
-    default: 'scented',
+    trim: true,
+    default: 'candle',
   },
 }, { timestamps: true });
 

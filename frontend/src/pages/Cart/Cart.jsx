@@ -1,10 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
 import { CartContext } from '../../components/CartContext/CartContext';
 
 const Cart = () => {
@@ -50,7 +46,7 @@ const Cart = () => {
       </motion.div>
     );
   }
-
+console.log(cartItems)
   return (
     <motion.div
       className="p-6 max-w-6xl mx-auto"
@@ -61,47 +57,26 @@ const Cart = () => {
       {error && <p className="text-red-600 mb-4">{error}</p>}
       <div className="flex flex-col gap-6">
         {cartItems.map(item => (
-          <div key={item.id} className="flex flex-col md:flex-row items-center gap-6 p-4 bg-white rounded-xl shadow-lg">
+          <div key={item._id} className="flex flex-col md:flex-row items-center gap-6 p-4 bg-white rounded-xl shadow-lg">
             {/* Item Image */}
             <div className="w-full md:w-32">
-              <Swiper
-                modules={[Navigation]}
-                navigation
-                spaceBetween={20}
-                slidesPerView={1}
-                className="rounded-lg"
-              >
-                {Array.isArray(item.image) ? (
-                  item.image.map((img, index) => (
-                    <SwiperSlide key={index}>
-                      <img
-                        src={img}
-                        alt={`${item.name} ${index}`}
-                        className="w-full h-24 rounded-lg object-cover"
-                      />
-                    </SwiperSlide>
-                  ))
-                ) : (
-                  <SwiperSlide>
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-24 rounded-lg object-cover"
-                    />
-                  </SwiperSlide>
-                )}
-              </Swiper>
+              <img
+                src={Array.isArray(item.imageUrls) ? item.imageUrls[0] : item.imageUrls || ''}
+                alt={item.name}
+                className="w-full h-24 rounded-lg object-cover"
+              />
             </div>
             {/* Item Details */}
             <div className="flex-1">
               <h3 className="text-xl font-semibold text-amber-800">{item.name}</h3>
+              <p className="text-gray-600">{item.type === 'gift' ? 'Gift Set' : 'Candle'}</p>
               <p className="text-gray-600">₹{item.price.toFixed(2)}</p>
-              {item.message && (
-                <p className="text-gray-600 text-sm mt-1">Message: {item.message}</p>
+              {item.message && item.type === 'gift' && (
+                <p className="text-gray-500 text-sm mt-1">Message: {item.message}</p>
               )}
               <div className="flex items-center gap-2 mt-2">
                 <button
-                  onClick={() => updateQuantity(item.id, -1)}
+                  onClick={() => updateQuantity(item._id, -1)}
                   className="bg-amber-700 text-white px-2 py-1 rounded-lg hover:bg-amber-800 transition"
                   disabled={item.quantity === 1}
                 >
@@ -109,13 +84,13 @@ const Cart = () => {
                 </button>
                 <span className="text-gray-600">{item.quantity}</span>
                 <button
-                  onClick={() => updateQuantity(item.id, 1)}
+                  onClick={() => updateQuantity(item._id, 1)}
                   className="bg-amber-700 text-white px-2 py-1 rounded-lg hover:bg-amber-800 transition"
                 >
                   +
                 </button>
                 <button
-                  onClick={() => removeItem(item.id)}
+                  onClick={() => removeItem(item._id)}
                   className="text-red-600 ml-4 hover:text-red-800"
                 >
                   Remove

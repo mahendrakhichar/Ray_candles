@@ -1,29 +1,69 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { CartContext } from '../../components/CartContext/CartContext';
-import candlesData from '../../data/candles';
-import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { useParams, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../components/CartContext/CartContext";
+import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 
 const CandleDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
-  const candle = candlesData.find((item) => item.id === parseInt(id));
 
-  if (!candle) return <div className="text-center mt-10">Candle Not Found</div>;
+  const [candle, setCandle] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch single candle by id
+  useEffect(() => {
+    const fetchCandle = async () => {
+      try {
+        const res = await fetch(`/api/products/${id}`);
+        const data = await res.json();
+        if (res.ok) {
+          // Normalize imageUrls for backward compatibility
+          const product = {
+            ...data.product,
+            imageUrls: Array.isArray(data.product.imageUrls)
+              ? data.product.imageUrls
+              : data.product.imageUrl
+              ? [data.product.imageUrl]
+              : [],
+          };
+          setCandle(product);
+        } else {
+          setCandle(null);
+        }
+      } catch (error) {
+        console.error("Error fetching candle:", error);
+        setCandle(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCandle();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="text-center mt-10 text-gray-600">Loading candle...</div>
+    );
+  }
+
+  if (!candle) {
+    return <div className="text-center mt-10">Candle Not Found</div>;
+  }
 
   const handleAddToCart = () => {
     addToCart(candle);
-    navigate('/cart');
+    navigate("/cart");
   };
 
   const handleBuyNow = () => {
-    addToCart({ ...candle, quantity: 1 }); // Reset to quantity 1 for Buy Now
-    navigate('/cart');
+    addToCart({ ...candle, quantity: 1 });
+    navigate("/cart");
   };
 
   return (
@@ -41,24 +81,30 @@ const CandleDetail = () => {
           slidesPerView={1}
           className="rounded-xl shadow-lg"
         >
-          {candle.image.map((img, index) => (
-            <SwiperSlide key={index}>
-              <img
-                src={img}
-                alt={`${candle.name} ${index}`}
-                className="rounded-xl w-full h-[400px] object-cover"
-              />
+          {candle.imageUrls.length > 0 ? (
+            candle.imageUrls.map((img, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={img}
+                  alt={`${candle.name} ${index + 1}`}
+                  className="rounded-xl w-full h-[500px] object-cover"
+                />
+              </SwiperSlide>
+            ))
+          ) : (
+            <SwiperSlide>
+              <div className="rounded-xl w-full h-[400px] bg-gray-200 flex items-center justify-center">
+                <span className="text-gray-500">No images available</span>
+              </div>
             </SwiperSlide>
-          ))}
+          )}
         </Swiper>
       </div>
 
       {/* Candle Info Section */}
       <div className="flex-1 space-y-4">
         <h2 className="text-4xl font-bold text-amber-800">{candle.name}</h2>
-        <p className="text-gray-500 text-lg">Fragrance: {candle.name}</p>
-        <p className="text-gray-600">Weight: 200g</p>
-        <p className="text-gray-600">Burn Duration: 30 hours</p>
+        <p className="text-gray-600">{candle.description}</p>
         <p className="text-2xl font-semibold text-green-700">₹{candle.price}</p>
 
         <div className="flex gap-4 pt-4">

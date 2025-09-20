@@ -1,14 +1,13 @@
-import { useState } from 'react';
-import candlesData from '../../data/candles'; // Assuming you have a candlesData.js file with candle data
-import CandleCard from '../../components/CandleCard/CandleCard'; // Assuming you have a CandleCard component
+import { useState, useEffect } from "react";
+import CandleCard from "../../components/CandleCard/CandleCard";
 
 const sortCandles = (candles, sortBy) => {
   switch (sortBy) {
-    case 'high':
+    case "high":
       return [...candles].sort((a, b) => b.price - a.price);
-    case 'low':
+    case "low":
       return [...candles].sort((a, b) => a.price - b.price);
-    case 'best':
+    case "best":
       return [...candles].sort((a, b) => b.sales - a.sales);
     default:
       return candles;
@@ -16,9 +15,41 @@ const sortCandles = (candles, sortBy) => {
 };
 
 const Candles = () => {
-  const [sortBy, setSortBy] = useState('best');
+  const [candles, setCandles] = useState([]);
+  const [sortBy, setSortBy] = useState("best");
+  const [loading, setLoading] = useState(true);
 
-  const sortedCandles = sortCandles(candlesData, sortBy);
+  useEffect(() => {
+    const fetchCandles = async () => {
+      try {
+        const res = await fetch("/api/products");
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        const data = await res.json();
+        const candleData = data.products.filter(
+          (product) => product.type === "candle"
+        );
+        setCandles(candleData);
+      } catch (error) {
+        console.error("Error fetching candles:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCandles();
+  }, []);
+
+  const sortedCandles = sortCandles(candles, sortBy);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-60">
+        <p className="text-gray-600">Loading candles...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-50">
@@ -38,13 +69,20 @@ const Candles = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {sortedCandles.map((candle) => (
-            <div key={candle.id} className="flex justify-center">
-              <CandleCard candle={candle} className="max-w-[200px] sm:max-w-[250px]" />
-            </div>
-          ))}
-        </div>
+        {sortedCandles.length === 0 ? (
+          <p className="text-center text-gray-600">No candles available</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {sortedCandles.map((candle) => (
+              <div key={candle._id} className="flex justify-center">
+                <CandleCard
+                  candle={candle}
+                  className="max-w-[200px] sm:max-w-[250px]"
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

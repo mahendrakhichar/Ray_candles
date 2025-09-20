@@ -14,7 +14,9 @@ import About from '../pages/Footer-links/About';
 import Cart from '../pages/Cart/Cart';
 import OrderDetails from '../pages/OrderDetails/OrderDetails';
 import { CartProvider } from '../components/CartContext/CartContext';
-import Temp from '../pages/temp';
+import AdminPanel from '../components/admin/AdminPanel';
+
+
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -29,12 +31,12 @@ const AppRoutes = () => {
           <Route path="/Contactus" element={<ContactUs />} />
           <Route path="/Candles/:id" element={<CandleDetail />} />
           <Route path="/order-details" element={<OrderDetails />} />
+          <Route path="/admin" element={<AdminPanel />} />
           {/* //footer */}
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/returns" element={<Returns />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/About" element={<About />} />
-          <Route path='/sweetu' element={<Temp/>}/>
 
 
         </Routes>

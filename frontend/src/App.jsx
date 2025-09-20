@@ -1,15 +1,13 @@
-import Footer from './components/Footer/Footer';
-import Navbar from './components/Navbar/Navbar';
+import { Toaster } from 'react-hot-toast';
 import AppRoutes from './router/AppRoutes';
 
 function App() {
-  return(
+  return (
     <>
-      {/* <Navbar/> */}
-      <AppRoutes/>
-      {/* <Footer/>                          */}
+      <Toaster position="top-right" /> {/* Add Toaster here */}
+      <AppRoutes />
     </>
-  )
+  );
 }
 
 export default App;

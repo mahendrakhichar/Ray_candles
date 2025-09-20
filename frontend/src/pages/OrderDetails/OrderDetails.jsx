@@ -61,7 +61,7 @@ const OrderDetails = () => {
       clearCart();
       setShowConfirmation(false);
       // Redirect to Instagram in a new tab
-      const instagramHandle = 'sentedcandles_by_ray';
+      const instagramHandle = 'rayofcandles';
       const instagramUrl = `https://www.instagram.com/${instagramHandle}`;
       window.open(instagramUrl, '_blank');
     } catch (err) {
