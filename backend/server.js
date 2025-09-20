@@ -21,7 +21,7 @@ connectDB();
 // Security Middleware
 app.use(helmet()); // Set security headers
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'https://ray-candles.vercel.app/' : '*',
+  origin: process.env.NODE_ENV === 'production' ? 'https://www.rayofcandles.in/' : '*',
 }));
 
 // Raw body parsing for webhooks
