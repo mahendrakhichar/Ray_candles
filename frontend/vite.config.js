@@ -20,4 +20,18 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1000, // increase limit (default is 500kB)
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],          // core react libs
+          router: ["react-router-dom"],           // router
+          vendor: ["axios"],                      // API client
+          ui: ["@headlessui/react", "@heroicons/react"], // example ui libs
+          // add more heavy libs here if needed
+        },
+      },
+    },
+  },
 })

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast'; // Import react-hot-toast
-
-axios.defaults.baseURL = '/api'; // uses proxy during dev
+import api from '@/utils/axios';
+// axios.defaults.baseURL = '/api'; // uses proxy during dev
 
 
 const Modal = ({ isOpen, title, children, onClose }) => {
@@ -42,7 +42,7 @@ export default function AdminPanel() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
+      const res = await api.post(
         `${import.meta.env.VITE_API_URL}/api/auth/login`,
         { username, password },
         { withCredentials: true } // important if using cookies
@@ -119,7 +119,7 @@ export default function AdminPanel() {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get('/products');
+      const res = await api.get('/products');
       // backend expected: { message: '...', products: [...] }
       // Normalize imageUrls to array for compatibility
       const items = (res.data.products || []).map(p => ({
@@ -204,7 +204,7 @@ export default function AdminPanel() {
         imageUrls: form.imageUrls.filter((url) => url.trim() !== ''),
         type: form.type,
       };
-      const res = await axios.post('/products', payload, {
+      const res = await api.post('/products', payload, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -246,7 +246,7 @@ export default function AdminPanel() {
         imageUrls: form.imageUrls.filter((url) => url.trim() !== ''),
         type: form.type,
       };
-      const res = await axios.put(`/products/${editing._id}`, payload, {
+      const res = await api.put(`/products/${editing._id}`, payload, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -274,7 +274,7 @@ export default function AdminPanel() {
   const handleDelete = async (_id) => {
     if (!confirm('Delete this product?')) return;
     try {
-      await axios.delete(`/products/${_id}`, {
+      await api.delete(`/products/${_id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
