@@ -36,10 +36,11 @@ app.use(cors({
     }
   },
   methods: ['GET','POST','PUT','DELETE','OPTIONS'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type','Authorization'],
   credentials: true
 }));
 
+app.options('*', cors());
 
 // Raw body parsing for webhooks
 app.use('/api/payments/webhook', express.raw({ type: 'application/json' }));
