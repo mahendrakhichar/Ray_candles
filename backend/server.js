@@ -40,7 +40,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('*', cors());
+app.options(/.*/, cors());  
 
 // Raw body parsing for webhooks
 app.use('/api/payments/webhook', express.raw({ type: 'application/json' }));
