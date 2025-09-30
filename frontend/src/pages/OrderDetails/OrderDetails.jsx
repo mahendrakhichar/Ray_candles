@@ -51,19 +51,22 @@ const OrderDetails = () => {
     setShowConfirmation(true);
   };
 
-  // Copy to clipboard and redirect to Instagram
+  // Copy to clipboard and redirect to WhatsApp
   const confirmCheckout = async () => {
     setLoading(true);
     try {
-      // Copy order details and address to clipboard
+      // Copy order details to clipboard (optional step if you still want it)
       await navigator.clipboard.writeText(message);
+
       // Clear cart
       clearCart();
       setShowConfirmation(false);
-      // Redirect to Instagram in a new tab
-      const instagramHandle = 'rayofcandles';
-      const instagramUrl = `https://www.instagram.com/${instagramHandle}`;
-      window.open(instagramUrl, '_blank');
+
+      // WhatsApp redirect
+      const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+; // replace with your WhatsApp number in international format
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
     } catch (err) {
       setError('Failed to copy order details. Please copy manually.');
       setShowConfirmation(false);
@@ -71,6 +74,7 @@ const OrderDetails = () => {
       setLoading(false);
     }
   };
+
 
   if (cartItems.length === 0 && !showConfirmation) {
     return (
@@ -106,26 +110,17 @@ const OrderDetails = () => {
             <h3 className="text-2xl font-bold text-amber-800 mb-4">Order Confirmation</h3>
             <p className="text-gray-600 whitespace-pre-line">{message}</p>
             <p className="text-gray-600 mt-4">
-              Click below to copy these details and contact{' '}
-              <a
-                href="https://www.instagram.com/rayofcandles"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-amber-700 underline"
-              >
-                @sentedcandles_by_ray
-              </a>{' '}
-              via DM to complete your order.
+              Click below to send these details directly on{' '}
+              <span className="text-amber-700 font-semibold">WhatsApp</span> to complete your order.
             </p>
             <div className="flex gap-4 mt-6">
               <button
                 onClick={confirmCheckout}
                 disabled={loading}
-                className={`bg-amber-700 text-white px-6 py-2 rounded-lg hover:bg-amber-800 transition ${
-                  loading ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className={`bg-amber-700 text-white px-6 py-2 rounded-lg hover:bg-amber-800 transition ${loading ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
               >
-                {loading ? 'Processing...' : 'Copy & Contact on Instagram'}
+                {loading ? 'Processing...' : 'Copy & Contact on WhatsApp'}
               </button>
               <button
                 onClick={() => setShowConfirmation(false)}
