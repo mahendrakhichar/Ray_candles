@@ -22,14 +22,20 @@ connectDB();
 app.use(helmet()); // Set security headers
 const allowedOrigins = [
   'http://localhost:5173',        // dev
-  'https://www.rayofcandles.in', // prod
-  'https://rayofcandles.in'      // Vercel sometimes strips www
-];
+  'http://localhost:3000',        // dev alt
+  'https://ray-candles.vercel.app', // Vercel production
+  'https://www.rayofcandles.in', // prod (custom domain if renewed)
+  'https://rayofcandles.in',
+  process.env.CLIENT_URL,         // Optional env variable from Render/hosting
+].filter(Boolean);
 
 app.use(cors({
   origin: function(origin, callback) {
-    if (!origin) return callback(null, true); // allow tools like Postman
-    if (allowedOrigins.includes(origin)) {
+    if (!origin) return callback(null, true); // allow tools like Postman / server-to-server
+    if (
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/ray-candles.*\.vercel\.app$/.test(origin)
+    ) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
